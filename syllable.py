@@ -8,7 +8,7 @@ import collections
 
 
 
-dataset = pd.read_csv('sample.csv')
+dataset = pd.read_csv('try.csv')
 ftCol = dataset.iloc[:, 0].values
 
 
@@ -27,11 +27,17 @@ def syllable_count(word):
         count -= 1
     if count == 0:
         count += 1
-    return count
+    return count+1
+print(ftCol)
+array = []
 
-numpyarray = np.empty(3767)
+for j in range(3767):
+   array.append([syllable_count(i) for i in ftCol])
+#print(array)
 
-for i in range(3767):
-    numpyarray=[syllable_count(i) for i in ftCol]
-print(numpyarray)
-
+list1 = {'Names':array}
+#print(list1)
+df = pd.DataFrame(list1)
+df_csv = pd.read_csv('try.csv')
+df_csv['syllable'] = df.Names  # changed here
+df_csv.to_csv('withsyllable.csv', index=False, mode= 'w')
