@@ -3,11 +3,6 @@ import numpy as np
 import csv
 
 import collections
-
-
-
-
-
 dataset = pd.read_csv('try.csv')
 ftCol = dataset.iloc[:, 0].values
 
@@ -39,5 +34,9 @@ list1 = {'Names':array}
 #print(list1)
 df = pd.DataFrame(list1)
 df_csv = pd.read_csv('try.csv')
-df_csv['syllable'] = df.Names  # changed here
-df_csv.to_csv('withsyllable.csv', index=False, mode= 'w')
+#df_csv['syllable'] = df.Names  # changed here
+#df_csv.to_csv('withsyllable.csv', index=False, mode= 'w')
+df_csv = pd.DataFrame(columns=['syllabe'])
+for i in range(3767):
+     df_csv.loc[i] = [array[i][i]]
+df_csv.to_csv('syllable.csv', index=False, mode= 'w')
