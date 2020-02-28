@@ -24,8 +24,7 @@ def rowval(word):
     return result
                 
            
-print(ftCol)
-print("fn")
+        
 for j in range(10):
    array.append([rowval(i) for i in ftCol])
 
