@@ -4,9 +4,9 @@ import numpy as np
 import csv
 
 import collections
-dataset = pd.read_csv('trywf.csv')
+dataset = pd.read_csv('level1 + syllable.csv')# The respective file names
 ftCol = dataset.iloc[:, 0].values
-
+df = pd.read_excel("families.xlsx") # The dataset
 print("enter")
 book = open_workbook("families.xlsx")
 array=[]
@@ -21,11 +21,15 @@ def rowval(word):
                     if cell.value == word :
                         for j in range(1):
                             result = rowidx
+                            
     return result
                 
            
-        
-for j in range(10):
-   array.append([rowval(i) for i in ftCol])
+print(ftCol)
+print("Calling function")
 
-print(array)
+array.append([rowval(i) for i in ftCol])
+
+print(array) # Array containing the row value in the dataset 
+
+
