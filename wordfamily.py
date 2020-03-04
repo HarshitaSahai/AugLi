@@ -4,10 +4,8 @@ import numpy as np
 import csv
 
 import collections
-dataset = pd.read_csv('level1 + syllable.csv')# The respective file names
-ftCol = dataset.iloc[:, 0].values
-df = pd.read_excel("families.xlsx") # The dataset
-print("enter")
+df_csv = pd.read_csv('level1 + syllable.csv')
+ftCol = df_csv.iloc[:, 0].values
 book = open_workbook("families.xlsx")
 array=[]
 def rowval(word):
@@ -23,13 +21,15 @@ def rowval(word):
                             result = rowidx
                             
     return result
-                
-           
 print(ftCol)
 print("Calling function")
-
 array.append([rowval(i) for i in ftCol])
-
-print(array) # Array containing the row value in the dataset 
-
+var = len(array)
+print(array) 
+list1 = {'Names':array}
+df = pd.DataFrame(list1)
+df_csv = pd.DataFrame(columns=['Word family'])
+for i in range(var) :
+     df_csv.loc[i] = [array[i][i]]
+df_csv.to_csv('oooo.csv', index=False, mode= 'w')
 
