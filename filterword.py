@@ -4,7 +4,7 @@ import numpy as np
 import csv
 import collections
 
-dataset = pd.read_csv('level1 + syllable.csv')# The respective file names
+dataset = pd.read_csv('level6 + syllable + word family.csv')# The respective file names
 ftCol = dataset.iloc[:, 0].values
 print("enter")
 book = open_workbook("badwordlist.xlsx")# badword dataset
@@ -28,17 +28,7 @@ var = len(ftCol)
 print("Calling function")
 array.append([badword(i) for i in ftCol])
 print(array) 
-list1 = {'Names':array}
-df = pd.DataFrame(list1)
-df_csv = pd.read_csv('level1 + syllable.csv')
-df_csv = pd.DataFrame(columns=['Filter Word'])
-for j in range(0, len(array)) :
-    print("Check")
-    if array[j]== '0':
-        df_csv.loc[j] = "Good"
-        print("Print good")
-    else:
-        df_csv.loc[j]= "Bad"
-df_csv.to_csv('random.csv', index=False, mode= 'w')
+
+    
 
 
