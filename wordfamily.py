@@ -5,10 +5,11 @@ import csv
 
 import collections
 
-df_csv = pd.read_csv('level1 + syllable + word filter.csv')
+df_csv = pd.read_csv('level2 + syllable + word filter.csv')
 ftCol = df_csv.iloc[:, 0].values
 var = len(ftCol)
 book = open_workbook("families.xlsx")
+worksheet = book.sheet_by_name('view')
 array = np.array(var)
 def rowval(word):
     result = 0
@@ -27,8 +28,11 @@ print(ftCol)
 print("Calling function")
 new_array =   np.append(array,[rowval(i) for i in ftCol])
 print(new_array)
+new_array[0] = 0
 df_csv = pd.DataFrame(columns=['Word family'])
 for i in range(var) :
-     df_csv.loc[i] = [new_array[i]]
+     row = worksheet.row(new_array[i])
+    
+     df_csv.loc[i] = row[0].value
 df_csv.to_csv('oooo.csv', index=False, mode= 'w')
 
