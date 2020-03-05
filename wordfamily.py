@@ -4,10 +4,12 @@ import numpy as np
 import csv
 
 import collections
-df_csv = pd.read_csv('level1 + syllable.csv')
+
+df_csv = pd.read_csv('level1 + syllable + word filter.csv')
 ftCol = df_csv.iloc[:, 0].values
+var = len(ftCol)
 book = open_workbook("families.xlsx")
-array=[]
+array = np.array(var)
 def rowval(word):
     result = 0
     for sheet in book.sheets():
@@ -17,19 +19,16 @@ def rowval(word):
                 row = sheet.row(rowidx)
                 for colidx, cell in enumerate(row):
                     if cell.value == word :
-                        for j in range(1):
+                        for j in range(var):
                             result = rowidx
                             
     return result
 print(ftCol)
 print("Calling function")
-array.append([rowval(i) for i in ftCol])
-var = len(array)
-print(array) 
-list1 = {'Names':array}
-df = pd.DataFrame(list1)
+new_array =   np.append(array,[rowval(i) for i in ftCol])
+print(new_array)
 df_csv = pd.DataFrame(columns=['Word family'])
 for i in range(var) :
-     df_csv.loc[i] = [array[i][i]]
+     df_csv.loc[i] = [new_array[i]]
 df_csv.to_csv('oooo.csv', index=False, mode= 'w')
 
