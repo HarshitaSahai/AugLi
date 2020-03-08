@@ -11,19 +11,20 @@ var = len(ftCol)
 
 def meaningg(word):
    
-    #=print(word)
+    #print(word)
 
     return PyDictionary.meaning(word)
 
 print(ftCol)
 array = []
-for j in range(var):
-    print("1")
-    array.append([meaningg(i) for i in ftCol])
+
+for i in ftCol:
+    ans = meaningg(i)
+    array.append(ans) 
 print(array)
 print(len(array))
 
 df_csv = pd.DataFrame(columns=['Meaning'])
-for i in range(var):
-     df_csv.loc[i] = [array[i][i]]
+for i in range(len(array)):
+     df_csv.loc[i] = [array[i]]
 df_csv.to_csv('newmeanresult.csv', index=False, mode= 'w')
