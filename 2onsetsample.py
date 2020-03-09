@@ -39,6 +39,7 @@ add=[]
 resultn=[]
 array1word2=[]
 for j in ftCol:
+    resultn.append('[')
     first= onset(j)
     second = onset2word(j)
     #print(first)
@@ -47,14 +48,17 @@ for j in ftCol:
         #for k in i:
         array2word2.append(onset2word(i))
         array1word2.append(onset(i))
-        flatList1 = [ item for elem in array1word2 for item in elem]
+        #flatList1 = [ item for elem in array1word2 for item in elem]
         #print(flatList1)
-        flatList2 = [ item for elem in array2word2 for item in elem]
+
+        #flatList2 = [ item for elem in array2word2 for item in elem]
         #print(flatList2)
-        add = flatList1 + flatList2
+        
+        add = array2word2 + array1word2
         for i in add:
             if i not in resultn:
                 resultn.append(i)
+    resultn.append(']')
 print(resultn)
 
 #print(array2word2)
@@ -65,7 +69,7 @@ print(resultn)
 #print(flatList2)
             
 #in_first = set(flatList1)
-#in_second = set(flatList2)
+#in_second = set(flatList[2)
 
 #in_second_but_not_in_first = in_second - in_first
 
@@ -77,15 +81,15 @@ print(resultn)
 
 """df_csv1 = pd.DataFrame(columns=['Onset count for first letter'])
 for i in range(len(array1c)):
-     df_csv1.loc[i] = [array1c[i]]
+     df_csv1.loc[i] = [array1c[i]]"""
 df_csv2 = pd.DataFrame(columns=['Onset word for second letter'])
-for j in range(len(result)):    
-     df_csv2.loc[j] = [result[j]]
-df_csv3 = pd.DataFrame(columns=['Onset count for second letter'])
+for j in range(len(resultn)):
+    df_csv2.loc[j] = [resultn[j]]         
+"""df_csv3 = pd.DataFrame(columns=['Onset count for second letter'])
 for k in range(len(array2c)):    
-     df_csv3.loc[k] = [array2c[k]]
+     df_csv3.loc[k] = [array2c[k]]"""
      
-df_csv1.to_csv('oc1.csv', index=False, mode= 'w')
-df_csv2.to_csv('ow2.csv', index=False, mode= 'w')
+df_csv2.to_csv('oc10.csv', index=False, mode= 'w')
+"""df_csv2.to_csv('ow2.csv', index=False, mode= 'w')
 df_csv3.to_csv('oc2.csv', index=False, mode= 'w')"""
 
