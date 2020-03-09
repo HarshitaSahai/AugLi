@@ -1,0 +1,48 @@
+Onset word for second letter
+[
+"['cave', 'cive', 'cove']"
+"['cive', 'dive', 'five', 'give', 'hive', 'jive', 'live', 'rive', 'vive', 'wive']"
+"['dive', 'dove']"
+['five']
+"['gave', 'give', 'gove', 'gyve']"
+"['have', 'hive', 'hove']"
+['jive']
+"['lave', 'live', 'love']"
+"['rave', 'reve', 'rive', 'rove']"
+['vive']
+"['wave', 'weve', 'wive', 'wove', 'wyve']"
+]
+[
+"['bate', 'bite', 'bote']"
+"['bate', 'cate', 'date', 'fate', 'gate', 'hate', 'late', 'mate', 'pate', 'rate', 'sate', 'tate', 'yate']"
+"['cate', 'cite', 'cote', 'cute']"
+"['date', 'dite', 'dote']"
+"['fate', 'fute']"
+"['gate', 'gote', 'gyte']"
+['hate']
+"['late', 'lete', 'lite', 'lote', 'lute']"
+"['mate', 'mete', 'mite', 'mote', 'mute']"
+"['pate', 'pete', 'pote']"
+"['rate', 'rite', 'rote']"
+"['sate', 'site']"
+"['tate', 'tete', 'tite', 'tote', 'tute']"
+"['yate', 'yite', 'yote']"
+]
+[
+"['bag', 'beg', 'big', 'bog', 'bug']"
+"['bog', 'cog', 'dog', 'fog', 'gog', 'hog', 'jog', 'log', 'mog', 'nog', 'rog', 'sog', 'tog', 'vog', 'wog']"
+"['cag', 'cig', 'cog']"
+"['dag', 'deg', 'dig', 'dog', 'dug']"
+"['fag', 'fig', 'fog']"
+"['gag', 'gig', 'gog']"
+"['hag', 'hog', 'hug']"
+"['jag', 'jig', 'jog', 'jug']"
+"['lag', 'leg', 'log', 'lug']"
+"['mag', 'mig', 'mog', 'mug']"
+"['nag', 'nig', 'nog']"
+"['rag', 'reg', 'rig', 'rog', 'rug']"
+"['sag', 'seg', 'sig', 'sog']"
+"['tag', 'teg', 'tig', 'tog', 'tug', 'tyg']"
+"['vag', 'vog', 'vug']"
+"['wag', 'wig', 'wog']"
+]
