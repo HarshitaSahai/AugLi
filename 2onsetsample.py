@@ -31,34 +31,49 @@ def onset2word(word):
          if i in setofwords:
               result.append(i)     
     return result
-        
+
 
 print(ftCol)
-array2word2=[]
+oarray2word1=[]
 add=[]
 resultn=[]
-array1word2=[]
+
+sarray1word2=[]
 for j in ftCol:
     resultn.append('[')
     first= onset(j)
     second = onset2word(j)
     #print(first)
-    #print(array1word)
+    #print(array1word
+    #print('first')
+    #print(first)
+    #print('second')
+    #print(second)
     for i in first:
         #for k in i:
-        array2word2.append(onset2word(i))
-        array1word2.append(onset(i))
-        flatList1 = [ item for elem in array1word2 for item in elem]
-        #print(flatList1)
-        flatList2 = [ item for elem in array2word2 for item in elem]
-        #print(flatList2)
+        oarray2word1.append(onset2word(i))
+        oflatList2 = [ item for elem in oarray2word1 for item in elem]
+        #print('first in second')
+        #print(oflatList2)
         
-        add = flatList1 + flatList2 
+        #print('-----')
+        #print(flatList2)
+    for k in second:
+        #for k in i:
+        sarray1word2.append(onset(k))
+       
+       
+        sflatList1 = [ item for elem in sarray1word2 for item in elem]
+        #print('second in first')
+        #print(sflatList1)
+        
+        add = sflatList1 + oflatList2 
         for i in add:
             if i not in resultn:
                 resultn.append(i)
     resultn.append(']')
 print(resultn)
+
 
 #print(array2word2)
 #print(array1word2)
@@ -88,7 +103,7 @@ for j in range(len(resultn)):
 for k in range(len(array2c)):    
      df_csv3.loc[k] = [array2c[k]]"""
      
-df_csv2.to_csv('oc10.csv', index=False, mode= 'w')
+df_csv2.to_csv('oc12.csv', index=False, mode= 'w')
 """df_csv2.to_csv('ow2.csv', index=False, mode= 'w')
 df_csv3.to_csv('oc2.csv', index=False, mode= 'w')"""
 
