@@ -7,6 +7,7 @@ df= pd.DataFrame(columns=['Onset word for second letter'])
 ftCol = df_csv1.iloc[:, 0].values
 final=[]
 def sppos(mean):
+    print(mean)
     result=[]
     print(mean)
     text =mean.split()
