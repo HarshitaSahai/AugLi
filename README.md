@@ -14,6 +14,8 @@ syllable.py: Counts number of syllables in your word.
 
 testsplitword.py: It splits the meaning of the word with POS tags.
 
+wordfamily.py: It identifies the family of word i.e groups of words that have a common feature or pattern. They have the same letter combinations, a similar sound, and they're a wonderful tool for those new to spelling.
+
 1onsetsample: It changes the first 1 letters of the word and finds words which have meaning. 
 
 Example: cat,bat,hat...
