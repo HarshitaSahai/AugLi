@@ -1,6 +1,6 @@
 # AugLi-Task-1
 
-filterord.py: With the help of "badwordlist.xlsx" all the inappropriate words are removed from the sheet.
+filterword.py: With the help of "badwordlist.xlsx" all the inappropriate words are removed from the sheet.
 
 hypothesis1.py: It finds if a word is present in a specified sheet.
 
