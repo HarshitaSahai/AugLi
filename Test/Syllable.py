@@ -25,7 +25,6 @@ def syllable_count(word):
     return count
 print(ftCol)
 array = []
-
 for j in range(var):
    array.append([syllable_count(i) for i in ftCol])
 #print(array)
