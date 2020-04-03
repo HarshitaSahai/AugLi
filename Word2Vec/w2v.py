@@ -28,7 +28,6 @@ def iter_texts():
                 for row in content[key]:
                     yield row['text']
 import spacy
-
 # make sure to run python3 -m spacy download en_core_web_sm
 nlp = spacy.load("en_core_web_sm")
 
