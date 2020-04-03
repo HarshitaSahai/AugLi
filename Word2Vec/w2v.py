@@ -71,11 +71,29 @@ model.build_vocab(sentences=tqdm(si))
 model.train(tqdm(si), total_examples=model.corpus_count, epochs=3)
 
 model.save('covid.w2v')
+resa=[]
 
 for i in ftCol:
-    res = model.wv.most_similar(i)
-    print(i)
-    print('RESULT \n')
-    print(res)
-    print('\n \n')
+    try:
+        res = model.wv.most_similar(i)
+        resa.append(res)
+        print(i)
+        print('RESULT \n')
+        print(res)
+       # print('\n \n')
+    except:
+        print(i)
+        resa.append('Word not present')
+        print('Word not present')
+      # print('\n \n')
+      
 
+
+var = len(ftCol)
+df = pd.DataFrame(resa)
+
+
+dataset = pd.DataFrame(columns=['word2vector'])
+for i in range(var):
+     dataset.loc[i] = [resa[i]]
+dataset.to_csv('w2vres.csv', index=False, mode= 'w')
