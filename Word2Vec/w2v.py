@@ -1,5 +1,4 @@
 from pathlib import Path
-
 DATA_PATH = Path('/kaggle/input/CORD-19-research-challenge/2020-03-13/')
 JUST_SOME = True # helpful for testing the code with small data
 from tqdm.auto import tqdm
