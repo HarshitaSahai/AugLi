@@ -1,4 +1,4 @@
-# AugLi-Task-1
+# AugLi
 
 filterword.py: With the help of "badwordlist.xlsx" all the inappropriate words are removed from the sheet.
 
