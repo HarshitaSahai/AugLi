@@ -17,10 +17,10 @@ def capital(country,uanswerarray,answer): #Function to find capital
     countryi =cnl.index(country)
     ans = cc[countryi]
     print("A) " + ans)
-    if countryi - 2 != 0:
-        print("B) " + cc[countryi - 2])
+    if countryi - 1 != 0:
+        print("B) " + cc[countryi - 1])
     else:
-        print("B) " + cc[countryi - 1]) 
+        print("B) " + cc[countryi + 1]) 
     uanswer = input()
     uanswerarray.append(uanswer)
     answer.append('A')
