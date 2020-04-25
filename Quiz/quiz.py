@@ -23,7 +23,7 @@ def capital(country,uanswerarray,answer): #Function to find capital
         print("B) " + cc[countryi - 1]) 
     uanswer = input()
     uanswerarray.append(uanswer)
-    answer.append('A) ')
+    answer.append('A')
 
 def currency(country,uanswerarray,answer): #Function to find currency 
     print("what is the currency of " + country)
@@ -31,10 +31,10 @@ def currency(country,uanswerarray,answer): #Function to find currency
     currencyi =ccul.index(country)
     ans  = ccu[currencyi]
     print("A) " + ans)
-    if currencyi - 2 != 0:
-        print("B) " + cc[currencyi - 2])
+    if currencyi - 1 != 0:
+        print("B) " + cc[currencyi - 1])
     else:
-        print("B) " + cc[currencyi - 1]) 
+        print("B) " + cc[currencyi + 1]) 
     uanswer = input()
     uanswerarray.append(uanswer)
     answer.append('A')
@@ -46,10 +46,10 @@ def officialang(country,uanswerarray,answer): #Function to find language
     languagei =coll.index(country)
     ans = col[languagei]
     print("A) " + ans)
-    if languagei - 2 != 0:
-        print("B) " + cc[languagei - 2])
+    if languagei - 1 != 0:
+        print("B) " + cc[languagei - 1])
     else:
-        print("B) " + cc[languagei - 1]) 
+        print("B) " + cc[languagei  + 1]) 
     uanswer = input()
     uanswerarray.append(uanswer)
     answer.append('A')
@@ -60,10 +60,10 @@ def headofgovt(country,uanswerarray,answer): #Function to find head of governmen
     headi =chogl.index(country)
     ans = chog[headi]
     print("A) " + ans)
-    if headi - 2 != 0:
-        print("B) " + cc[headi - 2])
+    if headi - 1 != 0:
+        print("B) " + cc[headi - 1])
     else:
-        print("B) " + cc[headi - 1]) 
+        print("B) " + cc[headi + 1]) 
     uanswer = input()
     uanswerarray.append(uanswer)
     answer.append('A')
