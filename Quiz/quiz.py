@@ -21,15 +21,7 @@ def capital(country,uanswerarray,answer): #Function to find capital
     #print(ansv)
     ansi = options.index(ansv) # finding its index in options
     del options[ansi] # deleting that option
-    opt1 = random.choice(options)
-    opt1i = options.index(opt1)
-    del options[opt1i]
-    opt2 = random.choice(options)
-    opt2i = options.index(opt2)
-    del options[opt2i]
-    opt3 = random.choice(options)
-    opt3i = options.index(opt3)
-    del options[opt3i]
+   
 
     if ansv == 'A':
         print("A) " + ans)
@@ -73,15 +65,7 @@ def currency(country,uanswerarray,answer): #Function to find currency
     #print(ansv)
     ansi = options.index(ansv) # finding its index in options
     del options[ansi] # deleting that option
-    opt1 = random.choice(options)
-    opt1i = options.index(opt1)
-    del options[opt1i]
-    opt2 = random.choice(options)
-    opt2i = options.index(opt2)
-    del options[opt2i]
-    opt3 = random.choice(options)
-    opt3i = options.index(opt3)
-    del options[opt3i]
+  
 
     if ansv == 'A':
         print("A) " + ans)
@@ -126,15 +110,7 @@ def officialang(country,uanswerarray,answer): #Function to find language
     #print(ansv)
     ansi = options.index(ansv) # finding its index in options
     del options[ansi] # deleting that option
-    opt1 = random.choice(options)
-    opt1i = options.index(opt1)
-    del options[opt1i]
-    opt2 = random.choice(options)
-    opt2i = options.index(opt2)
-    del options[opt2i]
-    opt3 = random.choice(options)
-    opt3i = options.index(opt3)
-    del options[opt3i]
+    
 
     if ansv == 'A':
         print("A) " + ans)
@@ -178,16 +154,7 @@ def headofgovt(country,uanswerarray,answer): #Function to find head of governmen
     #print(ansv)
     ansi = options.index(ansv) # finding its index in options
     del options[ansi] # deleting that option
-    opt1 = random.choice(options)
-    opt1i = options.index(opt1)
-    del options[opt1i]
-    opt2 = random.choice(options)
-    opt2i = options.index(opt2)
-    del options[opt2i]
-    opt3 = random.choice(options)
-    opt3i = options.index(opt3)
-    del options[opt3i]
-
+   
     if ansv == 'A':
         print("A) " + ans)
     else:
