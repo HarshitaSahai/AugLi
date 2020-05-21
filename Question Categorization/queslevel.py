@@ -76,8 +76,8 @@ resa = [ ] # Array storing level of every question in sheet or ftCol
 
 #checking the number of words in sentence
 def lengthofsentence(test_string):
-    
-    #print(test_string)
+    print("0")
+    print(test_string)
     res = sum([i.strip(string.punctuation).isalpha() for i in test_string.split()]) # Calculation takes place
     if res == 1 or res == 2 or res == 0: # If number of words < 3 then level = 0 i.e level 1.1 and level 1.2
         res = 0
@@ -90,7 +90,7 @@ def lengthofsentence(test_string):
 #Checking spelling and grammar 
 def checksen(test_string):
     
-    #print(test_string)
+    print(test_string)
     matches = tool.check(test_string) # Identify the errors in sentence
     if len(matches) != 0:
         cor = language_check.correct(test_string, matches) # perform correction
@@ -103,8 +103,9 @@ def checkcourtesy(test_string):
 
     flag = 0
     res = 1
+    
     for i in conversation:  # Using array conversation
-        if (i.find(test_string) == -1):  # Finding if any i in conversation is equal to test_string if yea then level 1 
+        if (i.find(test_string) != -1):  # Finding if any i in conversation is equal to test_string if yea then level 1 
             flag = 1  
     if flag == 1:
         #print("RES 1")
@@ -119,16 +120,17 @@ def ss(test_string):
     noss = -1
     flaga = 0
     flagq = 0
-   
+    print("1")
     test_stringn = test_string.split() # Spliting string into sepreate words 
     tokens_tag = pos_tag(test_string) # assiging POS tags to each word in string
-
+    
     for i in tokens_tag:
        
         if i[1] == "JJ" or i[1] == "JJR" or i[1] == "JJS" : # Finding if adjective is present
             flaga = 1
    
     for i in test_stringn:
+        print(i)
         for j in ques: # Finding if question words in ques array are present 
             if i == j:
                 flagq = 1
@@ -147,7 +149,7 @@ def ss(test_string):
 #Checking for level 2 checking pronoun and ques word
 def findpronoun(test_string):
     
-    
+    print("rhweijo8iek")
     npro = 0
     qpro = 0
     res = 2
@@ -226,7 +228,7 @@ def findopinion(test_string,flag3):
     flago = 0
     test_stringn = test_string.split() # Spliting string into sepreate words
     for i in test_stringn:
-        for j in opinionq: # Checking if any word in opinionw array present 
+        for j in opinionq: # Checking if any word in opinionq array present 
             if i == j: # If yes
                 flagq = 1 # Declare flagq == 1
        
@@ -286,14 +288,13 @@ var = len(ftCol) # Finfding number of questions
 
 
 for i in ftCol: # Identifying of level starts
-
+    #print("start")
     lengthofsentence(i) # Passing the ith entry
     
-'''
-Used to print array of list
+#Used to print array of list
 for i in resa:
-    print(i) 
-'''
+    print(i)
+
 
 
 df_csv = pd.read_csv('sampleques.csv',encoding= 'Utf-8') # Readinf question sheet again
@@ -303,4 +304,4 @@ k = 0
 for i in resa:
      df_csv.loc[k] = i 
      k = k + 1
-df_csv.to_csv('smaplelevelq.csv', index=False, mode= 'w') # Sheeting have the required ;ist
+df_csv.to_csv('samplelevelq.csv', index=False, mode= 'w') # Sheeting have the required ;ist
