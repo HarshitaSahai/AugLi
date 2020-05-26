@@ -19,7 +19,7 @@ df_csv = pd.DataFrame(columns=['Questions'])
 
 file = open('countryquizsheet.csv', 'w', newline='')
 writer = csv.writer(file)
-writer.writerow(["Ques", "Option 1", "Option 2","Option 3","Option 4","Correct answer"])
+writer.writerow(["Question", "Option 1", "Option 2","Option 3","Option 4","Correct answer"])
 def datawrite(ques,f,s,t,f4,cans):
     
 
@@ -53,46 +53,46 @@ def capital(country,uanswerarray,answer): #Function to find capital
     ansi = options.index(ansv) # finding its index in options
     del options[ansi] # deleting that option
    
-    ques = "what is the capital of" + country
+    ques = "what is the capital of " + country
     if ansv == 'A':
         print("A) " + ans)
         f = ans
     else:
         if countryi - 1 != 0 :
-            f = cnl[countryi-1]
+            f = cn[countryi-1]
             print("A) " + f)
         else:
-            f = cnl[countryi+1]
+            f = cn[countryi+1]
             print("A) " + f)
     if ansv == 'B':
         print("B) " + ans)
         s = ans
     else:
         if countryi - 2 != 0 :
-            s = cnl[countryi-2]
+            s = cn[countryi-2]
             print("B) " + s)
         else:
-            s = cnl[countryi+2]
+            s = cn[countryi+2]
             print("B) " + s)
     if ansv == 'C':
         print("C) " + ans)
         t = ans
     else:
         if countryi - 3 != 0 :
-            t = cnl[countryi-3]
+            t = cn[countryi-3]
             print("C) " + t)
         else:
-            t = cnl[countryi+3]
+            t = cn[countryi+3]
             print("C) " + t)
     if ansv == 'D':
         f4 = ans
         print("D) " + ans)
     else:
         if countryi - 4!= 0 :
-            f4 = cnl[countryi-4]
+            f4 = cn[countryi-4]
             print("D) " + f4)
         else:
-            f = cnl[countryi+4]
+            f = cn[countryi+4]
             print("D) " + f4)
     cans = ans
     uanswer = input()
@@ -118,40 +118,40 @@ def currency(country,uanswerarray,answer): #Function to find currency
         f = ans
     else:
         if currencyi - 1 != 0 :
-            f = ccul[currencyi-1]
+            f = ccu[currencyi-1]
             print("A) " + f)
         else:
-            f = ccul[currencyi+1]
+            f = ccu[currencyi+1]
             print("A) " + f)
     if ansv == 'B':
         print("B) " + ans)
         s = ans
     else:
         if currencyi - 2 != 0 :
-            s = ccul[currencyi-2]
+            s = ccu[currencyi-2]
             print("B) " + s)
         else:
-            s = ccul[currencyi+2]
+            s = ccu[currencyi+2]
             print("B) " + s)
     if ansv == 'C':
         print("C) " + ans)
         t = ans
     else:
         if currencyi - 3 != 0 :
-            t = ccul[currencyi-3]
+            t = ccu[currencyi-3]
             print("C) " + t)
         else:
-            t = ccul[currencyi+3]
+            t = ccu[currencyi+3]
             print("C) " + t)
     if ansv == 'D':
         f4 = ans
         print("D) " + ans)
     else:
         if currencyi - 4!= 0 :
-            f4 = ccul[currencyi-4]
+            f4 = ccu[currencyi-4]
             print("D) " + f4)
         else:
-            f = ccul[currencyi+4]
+            f4 = ccu[currencyi+4]
             print("D) " + f4)
     cans = ans
 
@@ -180,40 +180,40 @@ def officialang(country,uanswerarray,answer): #Function to find language
         f = ans
     else:
         if languagei - 1 != 0 :
-            f = coll[languagei-1]
+            f = col[languagei-1]
             print("A) " + f)
         else:
-            f = coll[languagei+1]
+            f = col[languagei+1]
             print("A) " + f)
     if ansv == 'B':
         print("B) " + ans)
         s = ans
     else:
         if languagei - 2 != 0 :
-            s = coll[languagei-2]
+            s = col[languagei-2]
             print("B) " + s)
         else:
-            s = coll[languagei+2]
+            s = col[languagei+2]
             print("B) " + s)
     if ansv == 'C':
         print("C) " + ans)
         t = ans
     else:
         if languagei - 3 != 0 :
-            t = coll[languagei-3]
+            t = col[languagei-3]
             print("C) " + t)
         else:
-            t = coll[languagei+3]
+            t = col[languagei+3]
             print("C) " + t)
     if ansv == 'D':
         f4 = ans
         print("D) " + ans)
     else:
         if languagei - 4!= 0 :
-            f4 = coll[languagei-4]
+            f4 = col[languagei-4]
             print("D) " + f4)
         else:
-            f = coll[languagei+4]
+            f4 = col[languagei+4]
             print("D) " + f4)
     cans = ans
 
@@ -240,40 +240,40 @@ def headofgovt(country,uanswerarray,answer): #Function to find head of governmen
         f = ans
     else:
         if headi - 1 != 0 :
-            f = chogl[headi-1]
+            f = chog[headi-1]
             print("A) " + f)
         else:
-            f = chogl[headi+1]
+            f = chog[headi+1]
             print("A) " + f)
     if ansv == 'B':
         print("B) " + ans)
         s = ans
     else:
         if headi - 2 != 0 :
-            s = chogl[headi-2]
+            s = chog[headi-2]
             print("B) " + s)
         else:
-            s = chogl[headi+2]
+            s = chog[headi+2]
             print("B) " + s)
     if ansv == 'C':
         print("C) " + ans)
         t = ans
     else:
         if headi - 3 != 0 :
-            t = chogl[headi-3]
+            t = chog[headi-3]
             print("C) " + t)
         else:
-            t = chogl[headi+3]
+            t = chog[headi+3]
             print("C) " + t)
     if ansv == 'D':
         f4 = ans
         print("D) " + ans)
     else:
         if headi - 4!= 0 :
-            f4 = chogl[headi-4]
+            f4 = chog[headi-4]
             print("D) " + f4)
         else:
-            f = chogl[headi+4]
+            f4 = chogl[headi+4]
             print("D) " + f4)
     cans = ans
 
