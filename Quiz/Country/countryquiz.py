@@ -20,11 +20,11 @@ df_csv = pd.DataFrame(columns=['Questions'])
 file = open('countryquizsheet.csv', 'w', newline='')
 writer = csv.writer(file)
 writer.writerow(["Question", "Option 1", "Option 2","Option 3","Option 4","Correct answer"])
-def datawrite(ques,f,s,t,f4,cans):
+def datawrite(ques,f,s,t,f4,cans,qtype):
     
 
         
-        writer.writerow([ques, f, s,t,f4,cans])
+        writer.writerow([ques, f, s,t,f4,cans,qtype])
     
 
 
@@ -54,6 +54,7 @@ def capital(country,uanswerarray,answer): #Function to find capital
     del options[ansi] # deleting that option
    
     ques = "what is the capital of " + country
+    qtype = "static"
     if ansv == 'A':
         print("A) " + ans)
         f = ans
@@ -96,13 +97,14 @@ def capital(country,uanswerarray,answer): #Function to find capital
             print("D) " + f4)
     cans = ans
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype)
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
 def currency(country,uanswerarray,answer): #Function to find currency 
     print("what is the currency of " + country)
     ques = "what is the currency of " + country
+    qtype = "static"
     ccul = cn.tolist()
     currencyi =ccul.index(country)
     ans  = ccu[currencyi]
@@ -156,7 +158,7 @@ def currency(country,uanswerarray,answer): #Function to find currency
     cans = ans
 
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype)
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -167,6 +169,7 @@ def officialang(country,uanswerarray,answer): #Function to find language
     coll = cn.tolist()
     languagei =coll.index(country)
     ans = col[languagei]
+    qtype = "static"
     options = ['A','B','C','D']
     ansv = random.choice(options) # selecting option for answer
     #print(ansv)
@@ -220,7 +223,7 @@ def officialang(country,uanswerarray,answer): #Function to find language
     uanswer = input()
 
     uanswerarray.append(uanswer)
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype)
     answer.append(ansv)
 
 def headofgovt(country,uanswerarray,answer): #Function to find head of government
@@ -229,6 +232,7 @@ def headofgovt(country,uanswerarray,answer): #Function to find head of governmen
     chogl = cn.tolist()
     headi =chogl.index(country)
     ans = chog[headi]
+    qtype = "dynamic"
     options = ['A','B','C','D']
     ansv = random.choice(options) # selecting option for answer
     #print(ansv)
@@ -279,7 +283,7 @@ def headofgovt(country,uanswerarray,answer): #Function to find head of governmen
 
     uanswer = input()
     uanswerarray.append(uanswer)
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype)
     answer.append(ansv)         # Appending the answer option in array 
 
 
