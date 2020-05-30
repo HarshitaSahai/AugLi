@@ -25,18 +25,19 @@ df_csv = pd.DataFrame(columns=['Questions'])
 
 file = open('solarsystemans.csv', 'w', newline='')
 writer = csv.writer(file)
-writer.writerow(["Question", "Option 1", "Option 2","Option 3","Option 4","Correct answer"])
-def datawrite(ques,f,s,t,f4,cans):
+writer.writerow(["Question", "Option 1", "Option 2","Option 3","Option 4","Correct answer","Question type"])
+def datawrite(ques,f,s,t,f4,cans,qtype):
     
 
         
-        writer.writerow([ques, f, s,t,f4,cans])
+        writer.writerow([ques, f, s,t,f4,cans,qtype])
     
 
 
 def namedfor(planet,uanswerarray,answer): #Function to find name for
  
     print("what is " + planet + " named for ? ")
+    qtype = "static"
     pnl = pn.tolist()
     planeti =pnl.index(planet)
     ans = pnfor[planeti]
@@ -89,7 +90,7 @@ def namedfor(planet,uanswerarray,answer): #Function to find name for
             print("D) " + f4)
     cans = ans
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype)
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -98,6 +99,7 @@ def diameter(planet,uanswerarray,answer): #Function to find diameter
     print("what is the diameter of " + planet + " ? ")
     ques = "what is the diameter of " + planet + " ? "
     pdiameterl = pn.tolist()
+    qtype = "static"
     diameteri =pdiameterl.index(planet)
     ans  = pdiameter[diameteri]
     options = ['A','B','C','D']
@@ -150,7 +152,7 @@ def diameter(planet,uanswerarray,answer): #Function to find diameter
     cans = ans
 
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype)
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -207,9 +209,10 @@ def satellite(planet,uanswerarray,answer): #Function to find satellite
         else:
             f4 = psat[planeti+4]
             print("D) " + f4)
+    qtype = "dynamic"
     cans = ans
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype)
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -223,6 +226,7 @@ def rotation(planet,uanswerarray,answer): #Function to find rotation
     planeti =pnl.index(planet)
     ans = protp[planeti]
     options = ['A','B','C','D']
+    qtype = "static"
     ansv = random.choice(options) # selecting option for answer
     #print(ansv)
     ansi = options.index(ansv) # finding its index in options
@@ -271,7 +275,7 @@ def rotation(planet,uanswerarray,answer): #Function to find rotation
             print("D) " + f4)
     cans = ans
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype)
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -280,6 +284,7 @@ def revolution(planet,uanswerarray,answer): #Function to find revolution
     print("what is the revolution period of "  + planet + " ? ")
     pnl = pn.tolist()
     planeti =pnl.index(planet)
+    qtype = "static"
     ans = prevop[planeti]
     options = ['A','B','C','D']
     ansv = random.choice(options) # selecting option for answer
@@ -330,7 +335,7 @@ def revolution(planet,uanswerarray,answer): #Function to find revolution
             print("D) " + f4)
     cans = ans
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype)
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -341,6 +346,7 @@ def temperature(planet,uanswerarray,answer): #Function to find temperature
     planeti =pnl.index(planet)
     ans = ptemp[planeti]
     options = ['A','B','C','D']
+    qtype = "dynamic"
     ansv = random.choice(options) # selecting option for answer
     #print(ansv)
     ansi = options.index(ansv) # finding its index in options
@@ -389,7 +395,7 @@ def temperature(planet,uanswerarray,answer): #Function to find temperature
             print("D) " + f4)
     cans = ans
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype)
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -400,6 +406,7 @@ def atomcomposition(planet,uanswerarray,answer): #Function to find atmospheric c
     planeti =pnl.index(planet)
     ans = patomc[planeti]
     options = ['A','B','C','D']
+    qtype = "static"
     ansv = random.choice(options) # selecting option for answer
     #print(ansv)
     ansi = options.index(ansv) # finding its index in options
@@ -448,12 +455,13 @@ def atomcomposition(planet,uanswerarray,answer): #Function to find atmospheric c
             print("D) " + f4)
     cans = ans
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype)
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
 def rings(planet,uanswerarray,answer): #Function to find number of rings
     
+    qtype = "static"
     print("What are the number of rings in "  + planet + " ? ")
     pnl = pn.tolist()
     planeti =pnl.index(planet)
@@ -507,13 +515,14 @@ def rings(planet,uanswerarray,answer): #Function to find number of rings
             print("D) " + f4)
     cans = ans
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype)
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
 def orderfromsun(planet,uanswerarray,answer): #Function to find position from sun
     
     print("What is the position of " + planet + " from the sun ? ")
+    qtype = "dynamic"
     pnl = pn.tolist()
     planeti =pnl.index(planet)
     ans = porderfromsun[planeti]
@@ -566,7 +575,7 @@ def orderfromsun(planet,uanswerarray,answer): #Function to find position from su
             print("D) " + f4)
     cans = ans
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype)
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -576,6 +585,7 @@ def orderfromsize(planet,uanswerarray,answer): #Function to order of planets by 
     pnl = pn.tolist()
     planeti =pnl.index(planet)
     ans = porderfromsize[planeti]
+    qtype = "static"
     options = ['A','B','C','D']
     ansv = random.choice(options) # selecting option for answer
     #print(ansv)
@@ -625,7 +635,7 @@ def orderfromsize(planet,uanswerarray,answer): #Function to order of planets by 
             print("D) " + f4)
     cans = ans
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype)
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -634,6 +644,7 @@ def composition(planet,uanswerarray,answer): #Function to composition
     pnl = pn.tolist()
     planeti =pnl.index(planet)
     ans = pcomp[planeti]
+    qtype = "static"
     options = ['A','B','C','D']
     ansv = random.choice(options) # selecting option for answer
     #print(ansv)
@@ -683,7 +694,7 @@ def composition(planet,uanswerarray,answer): #Function to composition
             print("D) " + str(f4))
     cans = ans
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype)
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
