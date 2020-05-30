@@ -14,12 +14,12 @@ import pygsheets
 
 file = open('historyquizsheet.csv', 'w', newline='')
 writer = csv.writer(file)
-writer.writerow(["Question", "Option 1", "Option 2","Option 3","Option 4","Correct answer"])
-def datawrite(ques,f,s,t,f4,cans):
+writer.writerow(["Question", "Option 1", "Option 2","Option 3","Option 4","Correct answer","Question type"])
+def datawrite(ques,f,s,t,f4,cans,qtype):
     
 
         
-        writer.writerow([ques, f, s,t,f4,cans])
+        writer.writerow([ques, f, s,t,f4,cans,qtype])
 # Women    
 df_csv1 = pd.read_csv('history-date-events.csv',encoding='cp1252')
 hdeyear = df_csv1.iloc[1:33,0].values
@@ -97,7 +97,7 @@ def hdeeventsfunction(year,uanswerarray,answer): #Function to find events in the
     cans = ans
 
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype = "static")
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -163,7 +163,7 @@ def hdeieventsfunction(year,uanswerarray,answer): #Function to find events in th
     cans = ans
 
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype = "static")
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -227,7 +227,7 @@ def hdeiimportancefunction(uanswerarray,answer): #Function to importance of even
     cans = ans
 
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype = "static")
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
