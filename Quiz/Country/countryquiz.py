@@ -1,3 +1,294 @@
+import random 
+import pandas as pd
+import numpy as np
+import cgi
+import sys
+import csv
+import gspread 
+from Google import Create_Service
+from oauth2client.service_account import ServiceAccountCredentials
+import pygsheets
+
+
+
+
+
+# Creating a sheet and adding the questions,options and result
+df_csv = pd.DataFrame(columns=['Questions'])
+
+
+file = open('countryquizsheet.csv', 'w', newline='')
+writer = csv.writer(file)
+writer.writerow(["Question", "Option 1", "Option 2","Option 3","Option 4","Correct answer"])
+def datawrite(ques,f,s,t,f4,cans):
+    
+
+        
+        writer.writerow([ques, f, s,t,f4,cans])
+    
+
+
+
+
+
+
+
+df_csv1 = pd.read_csv('countrylangcurrencyhoc.csv',encoding='cp1252')
+cn = df_csv1.iloc[:,0].values
+cc = df_csv1.iloc[:,1].values
+ccu = df_csv1.iloc[:,2].values
+col = df_csv1.iloc[:,3].values
+chog = df_csv1.iloc[:,4].values
+
+
+def capital(country,uanswerarray,answer): #Function to find capital
+    
+    print("what is the capital of "  + country)
+    cnl = cn.tolist()
+    countryi =cnl.index(country)
+    ans = cc[countryi]
+    options = ['A','B','C','D']
+    ansv = random.choice(options) # selecting option for answer
+    #print(ansv)
+    ansi = options.index(ansv) # finding its index in options
+    del options[ansi] # deleting that option
+   
+    ques = "what is the capital of " + country
+    if ansv == 'A':
+        print("A) " + ans)
+        f = ans
+    else:
+        if countryi - 1 != 0 :
+            f = cc[countryi-1]
+            print("A) " + f)
+        else:
+            f = cc[countryi+1]
+            print("A) " + f)
+    if ansv == 'B':
+        print("B) " + ans)
+        s = ans
+    else:
+        if countryi - 2 != 0 :
+            s = cc[countryi-2]
+            print("B) " + s)
+        else:
+            s = cc[countryi+2]
+            print("B) " + s)
+    if ansv == 'C':
+        print("C) " + ans)
+        t = ans
+    else:
+        if countryi - 3 != 0 :
+            t = cc[countryi-3]
+            print("C) " + t)
+        else:
+            t = cc[countryi+3]
+            print("C) " + t)
+    if ansv == 'D':
+        f4 = ans
+        print("D) " + ans)
+    else:
+        if countryi - 4!= 0 :
+            f4 = cc[countryi-4]
+            print("D) " + f4)
+        else:
+            f4 = cc[countryi+4]
+            print("D) " + f4)
+    cans = ans
+    uanswer = input()
+    datawrite(ques,f,s,t,f4,cans)
+    uanswerarray.append(uanswer)
+    answer.append(ansv)         # Appending the answer option in array 
+
+def currency(country,uanswerarray,answer): #Function to find currency 
+    print("what is the currency of " + country)
+    ques = "what is the currency of " + country
+    ccul = cn.tolist()
+    currencyi =ccul.index(country)
+    ans  = ccu[currencyi]
+    options = ['A','B','C','D']
+    ansv = random.choice(options) # selecting option for answer
+    #print(ansv)
+    ansi = options.index(ansv) # finding its index in options
+    del options[ansi] # deleting that option
+  
+
+    if ansv == 'A':
+        print("A) " + ans)
+        f = ans
+    else:
+        if currencyi - 1 != 0 :
+            f = ccu[currencyi-1]
+            print("A) " + f)
+        else:
+            f = ccu[currencyi+1]
+            print("A) " + f)
+    if ansv == 'B':
+        print("B) " + ans)
+        s = ans
+    else:
+        if currencyi - 2 != 0 :
+            s = ccu[currencyi-2]
+            print("B) " + s)
+        else:
+            s = ccu[currencyi+2]
+            print("B) " + s)
+    if ansv == 'C':
+        print("C) " + ans)
+        t = ans
+    else:
+        if currencyi - 3 != 0 :
+            t = ccu[currencyi-3]
+            print("C) " + t)
+        else:
+            t = ccu[currencyi+3]
+            print("C) " + t)
+    if ansv == 'D':
+        f4 = ans
+        print("D) " + ans)
+    else:
+        if currencyi - 4!= 0 :
+            f4 = ccu[currencyi-4]
+            print("D) " + f4)
+        else:
+            f4 = ccu[currencyi+4]
+            print("D) " + f4)
+    cans = ans
+
+    uanswer = input()
+    datawrite(ques,f,s,t,f4,cans)
+    uanswerarray.append(uanswer)
+    answer.append(ansv)         # Appending the answer option in array 
+
+    
+def officialang(country,uanswerarray,answer): #Function to find language
+    print("what is the official language of " + country)
+    ques = "what is the official language of " + country
+    coll = cn.tolist()
+    languagei =coll.index(country)
+    ans = col[languagei]
+    options = ['A','B','C','D']
+    ansv = random.choice(options) # selecting option for answer
+    #print(ansv)
+    ansi = options.index(ansv) # finding its index in options
+    del options[ansi] # deleting that option
+    
+
+  
+    if ansv == 'A':
+        print("A) " + ans)
+        f = ans
+    else:
+        if languagei - 1 != 0 :
+            f = col[languagei-1]
+            print("A) " + f)
+        else:
+            f = col[languagei+1]
+            print("A) " + f)
+    if ansv == 'B':
+        print("B) " + ans)
+        s = ans
+    else:
+        if languagei - 2 != 0 :
+            s = col[languagei-2]
+            print("B) " + s)
+        else:
+            s = col[languagei+2]
+            print("B) " + s)
+    if ansv == 'C':
+        print("C) " + ans)
+        t = ans
+    else:
+        if languagei - 3 != 0 :
+            t = col[languagei-3]
+            print("C) " + t)
+        else:
+            t = col[languagei+3]
+            print("C) " + t)
+    if ansv == 'D':
+        f4 = ans
+        print("D) " + ans)
+    else:
+        if languagei - 4!= 0 :
+            f4 = col[languagei-4]
+            print("D) " + f4)
+        else:
+            f4 = col[languagei+4]
+            print("D) " + f4)
+    cans = ans
+
+    uanswer = input()
+
+    uanswerarray.append(uanswer)
+    datawrite(ques,f,s,t,f4,cans)
+    answer.append(ansv)
+
+def headofgovt(country,uanswerarray,answer): #Function to find head of government
+    print("who is the head of government of " + country)
+    ques = "who is the head of government of " + country
+    chogl = cn.tolist()
+    headi =chogl.index(country)
+    ans = chog[headi]
+    options = ['A','B','C','D']
+    ansv = random.choice(options) # selecting option for answer
+    #print(ansv)
+    ansi = options.index(ansv) # finding its index in options
+    del options[ansi] # deleting that option
+   
+    if ansv == 'A':
+        print("A) " + ans)
+        f = ans
+    else:
+        if headi - 1 != 0 :
+            f = chog[headi-1]
+            print("A) " + f)
+        else:
+            f = chog[headi+1]
+            print("A) " + f)
+    if ansv == 'B':
+        print("B) " + ans)
+        s = ans
+    else:
+        if headi - 2 != 0 :
+            s = chog[headi-2]
+            print("B) " + s)
+        else:
+            s = chog[headi+2]
+            print("B) " + s)
+    if ansv == 'C':
+        print("C) " + ans)
+        t = ans
+    else:
+        if headi - 3 != 0 :
+            t = chog[headi-3]
+            print("C) " + t)
+        else:
+            t = chog[headi+3]
+            print("C) " + t)
+    if ansv == 'D':
+        f4 = ans
+        print("D) " + ans)
+    else:
+        if headi - 4!= 0 :
+            f4 = chog[headi-4]
+            print("D) " + f4)
+        else:
+            f4 = chogl[headi+4]
+            print("D) " + f4)
+    cans = ans
+
+    uanswer = input()
+    uanswerarray.append(uanswer)
+    datawrite(ques,f,s,t,f4,cans)
+    answer.append(ansv)         # Appending the answer option in array 
+
+
+funcnum = [1,2,3,4] # 1. Capital 2. Currency 3. Language 4. Head og govt.
+
+
+
+
+
 def questions(): # Function will create 5 questions randomly
     one = 0
     two = 0
@@ -73,3 +364,12 @@ def run_quiz(aq):
 
 
 run_quiz(aq) # Starting the quiz
+
+
+
+
+
+
+
+
+
