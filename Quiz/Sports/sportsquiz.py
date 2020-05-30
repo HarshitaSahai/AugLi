@@ -14,12 +14,12 @@ import pygsheets
 
 file = open('sportsquizsheet.csv', 'w', newline='')
 writer = csv.writer(file)
-writer.writerow(["Question", "Option 1", "Option 2","Option 3","Option 4","Correct answer"])
-def datawrite(ques,f,s,t,f4,cans):
+writer.writerow(["Question", "Option 1", "Option 2","Option 3","Option 4","Correct answer","Question Type"])
+def datawrite(ques,f,s,t,f4,cans,qtype):
     
 
         
-        writer.writerow([ques, f, s,t,f4,cans])
+        writer.writerow([ques, f, s,t,f4,cans,qtype])
 # Women    
 df_csv1 = pd.read_csv('womens_participation_in_the_games_of_the_olympiad.csv',encoding='cp1252')
 wgyear = df_csv1.iloc[:,0].values
@@ -105,7 +105,7 @@ def womenparticipants(year,uanswerarray,answer): #Function to find number of wom
     cans = ans
 
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype = "static")
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -171,7 +171,7 @@ def womenevents(year,uanswerarray,answer): #Function to find number of women par
     cans = ans
 
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype = "static")
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -237,7 +237,7 @@ def cwchostfunction(year,uanswerarray,answer): #Function to find cwc host
     cans = ans
 
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype = "static")
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -303,7 +303,7 @@ def cwcvenufunction(year,uanswerarray,answer): #Function to find cwc venu
     cans = ans
 
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype = "static")
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -369,7 +369,7 @@ def cwcwinnerfunction(year,uanswerarray,answer): #Function to find cwc winner
     cans = ans
 
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype = "static")
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -435,7 +435,7 @@ def achostfunction(year,uanswerarray,answer): #Function to find ac host
     cans = ans
 
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype = "static")
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -500,7 +500,7 @@ def acvenufunction(year,uanswerarray,answer): #Function to find venu
     cans = ans
 
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype = "static")
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
@@ -566,7 +566,7 @@ def acwinnerfunction(year,uanswerarray,answer): #Function to find winner
     cans = ans
 
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans)
+    datawrite(ques,f,s,t,f4,cans,qtype = "static")
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
