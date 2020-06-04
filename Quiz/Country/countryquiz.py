@@ -19,12 +19,12 @@ df_csv = pd.DataFrame(columns=['Questions'])
 
 file = open('countryquizsheet.csv', 'w', newline='')
 writer = csv.writer(file)
-writer.writerow(["Question", "Option 1", "Option 2","Option 3","Option 4","Correct answer"])
-def datawrite(ques,f,s,t,f4,cans,qtype):
+writer.writerow(["Question", "Option 1", "Option 2","Option 3","Option 4","Correct answer","Ques Type","Question Level"])
+def datawrite(ques,f,s,t,f4,cans,qtype,qlevel):
     
 
         
-        writer.writerow([ques, f, s,t,f4,cans,qtype])
+        writer.writerow([ques, f, s,t,f4,cans,qtype,qlevel])
     
 
 
@@ -39,11 +39,14 @@ cc = df_csv1.iloc[:,1].values
 ccu = df_csv1.iloc[:,2].values
 col = df_csv1.iloc[:,3].values
 chog = df_csv1.iloc[:,4].values
+df_csv2 = pd.read_csv('countrylevel.csv',encoding='cp1252')
+ceasy = df_csv2.iloc[1:28,0].values 
+cmedium = df_csv2.iloc[1:36,1].values
+chard = df_csv2.iloc[1:109,2].values  
 
-
-def capital(country,uanswerarray,answer): #Function to find capital
+def capital(country,uanswerarray,answer,qlevel): #Function to find capital
     
-    print("what is the capital of "  + country)
+    print("what is the capital of "  + str(country))
     cnl = cn.tolist()
     countryi =cnl.index(country)
     ans = cc[countryi]
@@ -97,12 +100,12 @@ def capital(country,uanswerarray,answer): #Function to find capital
             print("D) " + f4)
     cans = ans
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans,qtype)
+    datawrite(ques,f,s,t,f4,cans,qtype,qlevel)
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
-def currency(country,uanswerarray,answer): #Function to find currency 
-    print("what is the currency of " + country)
+def currency(country,uanswerarray,answer,qlevel): #Function to find currency 
+    print("what is the currency of " + str(country))
     ques = "what is the currency of " + country
     qtype = "static"
     ccul = cn.tolist()
@@ -158,13 +161,13 @@ def currency(country,uanswerarray,answer): #Function to find currency
     cans = ans
 
     uanswer = input()
-    datawrite(ques,f,s,t,f4,cans,qtype)
+    datawrite(ques,f,s,t,f4,cans,qtype,qlevel)
     uanswerarray.append(uanswer)
     answer.append(ansv)         # Appending the answer option in array 
 
     
-def officialang(country,uanswerarray,answer): #Function to find language
-    print("what is the official language of " + country)
+def officialang(country,uanswerarray,answer,qlevel): #Function to find language
+    print("what is the official language of " + str(country))
     ques = "what is the official language of " + country
     coll = cn.tolist()
     languagei =coll.index(country)
@@ -223,11 +226,11 @@ def officialang(country,uanswerarray,answer): #Function to find language
     uanswer = input()
 
     uanswerarray.append(uanswer)
-    datawrite(ques,f,s,t,f4,cans,qtype)
+    datawrite(ques,f,s,t,f4,cans,qtype,qlevel)
     answer.append(ansv)
 
-def headofgovt(country,uanswerarray,answer): #Function to find head of government
-    print("who is the head of government of " + country)
+def headofgovt(country,uanswerarray,answer,qlevel): #Function to find head of government
+    print("who is the head of government of " + str(country))
     ques = "who is the head of government of " + country
     chogl = cn.tolist()
     headi =chogl.index(country)
@@ -283,7 +286,7 @@ def headofgovt(country,uanswerarray,answer): #Function to find head of governmen
 
     uanswer = input()
     uanswerarray.append(uanswer)
-    datawrite(ques,f,s,t,f4,cans,qtype)
+    datawrite(ques,f,s,t,f4,cans,qtype,qlevel)
     answer.append(ansv)         # Appending the answer option in array 
 
 
@@ -293,51 +296,209 @@ funcnum = [1,2,3,4] # 1. Capital 2. Currency 3. Language 4. Head og govt.
 
 
 
-def questions(): # Function will create 5 questions randomly
-    one = 0
-    two = 0
-    three = 0
-    four = 0
+def questionsleveleasy(): # Function will create 5 questions randomly
     answer = [ ] # Storing correct answer
     uanswerarray = [ ] # Storing user answer
-    country = random.choice(cn)
+   
     for i in range(5): # Can change number of questions from here
         j = random.sample(funcnum,1)
+        country = random.choice(ceasy)
+        flag = 0
         #print(j)
         if j == [1]:
-            one = one + 1
-            if one > 1: #If already accessed with global country selected the change the name
-                capital(random.choice(cn),uanswerarray,answer)
+            flag = flag + 2
+            if flag  > 1: #If already accessed with global country selected the change the name
+                capital(random.choice(ceasy),uanswerarray,answer,"EASY")
                 
             else:
-                capital(country,uanswerarray,answer)
+                capital(country,uanswerarray,answer,"EASY")
             
 
         elif j == [2]:
-            two = two + 1
-            if two > 1: #If already accessed with global country selected the change the name
-                currency(random.choice(cn),uanswerarray,answer)
+            flag  = flag  + 2
+            if flag > 1 : #If already accessed with global country selected the change the name
+                currency(random.choice(ceasy),uanswerarray,answer,"EASY")
                 
             else:
-                currency(country,uanswerarray,answer)
+                currency(country,uanswerarray,answer,"EASY")
                 
         elif j == [3]:
-            three = three + 1
-            if three > 1: #If already accessed with global country selected the change the name
-                officialang(random.choice(cn),uanswerarray,answer)
+            flag  = flag  + 2
+            if flag > 1: #If already accessed with global country selected the change the name
+                officialang(random.choice(ceasy),uanswerarray,answer,"EASY")
                 
             else:
-                officialang(country,uanswerarray,answer)
+                officialang(country,uanswerarray,answer,"EASY")
                 
         elif j == [4]:
-            four = four + 1
-            if four > 1: #If already accessed with global country selected the change the name
-                headofgovt(random.choice(cn),uanswerarray,answer)
+            flag  = flag  + 2
+            if flag > 1: #If already accessed with global country selected the change the name
+                headofgovt(random.choice(ceasy),uanswerarray,answer,"EASY")
             
             else:
-                headofgovt(country,uanswerarray,answer)
+                headofgovt(country,uanswerarray,answer,"EASY")
             
     return answer,uanswerarray
+
+def questionslevelmedium(): # Function will create 5 questions randomly
+   
+    answer = [ ] # Storing correct answer
+    uanswerarray = [ ] # Storing user answer
+    
+    for i in range(5): # Can change number of questions from here
+        j = random.sample(funcnum,1)
+        country = random.choice(cmedium)
+        flag = 0
+        #print(j)
+        if j == [1]:
+            flag  = flag  + 2
+            if flag  > 1: #If already accessed with global country selected the change the name
+                capital(random.choice(cmedium),uanswerarray,answer,"MEDIUM")
+                
+            else:
+                capital(country,uanswerarray,answer,"MEDIUM")
+            
+
+        elif j == [2]:
+            flag  = flag  + 2
+           
+            if flag>1: #If already accessed with global country selected the change the name
+                currency(random.choice(cmedium),uanswerarray,answer,"MEDIUM")
+                
+            else:
+                currency(country,uanswerarray,answer,"MEDIUM")
+                
+        elif j == [3]:
+            flag  = flag  + 2
+            if flag > 1: #If already accessed with global country selected the change the name
+                officialang(random.choice(cmedium),uanswerarray,answer,"MEDIUM")
+                
+            else:
+                officialang(country,uanswerarray,answer,"MEDIUM")
+                
+        elif j == [4]:
+            flag  = flag  + 2
+            if flag > 1: #If already accessed with global country selected the change the name
+                headofgovt(random.choice(cmedium),uanswerarray,answer,"MEDIUM")
+            
+            else:
+                headofgovt(country,uanswerarray,answer,"MEDIUM")
+            
+    return answer,uanswerarray
+
+def questionslevelhard(): # Function will create 5 questions randomly
+   
+    answer = [ ] # Storing correct answer
+    uanswerarray = [ ] # Storing user answer
+    
+    for i in range(5): # Can change number of questions from here
+        j = random.sample(funcnum,1)
+        country = random.choice(chard)
+        flag = 0
+        #print(j)
+        if j == [1]:
+            flag = flag + 2
+            if flag  > 1: #If already accessed with global country selected the change the name
+                capital(random.choice(chard),uanswerarray,answer,"HARD")
+                
+            else:
+                capital(country,uanswerarray,answer,"HARD")
+            
+
+        elif j == [2]:
+            flag  = flag  + 2
+            if flag > 1: #If already accessed with global country selected the change the name
+                currency(random.choice(cmedium),uanswerarray,answer,"HARD")
+                
+            else:
+                currency(country,uanswerarray,answer,"HARD")
+                
+        elif j == [3]:
+            flag  = flag  + 2
+            if flag  > 1: #If already accessed with global country selected the change the name
+                officialang(random.choice(cmedium),uanswerarray,answer,"HARD")
+                
+            else:
+                officialang(country,uanswerarray,answer,"HARD")
+                
+        elif j == [4]:
+            flag  = flag  + 2
+            if flag > 1: #If already accessed with global country selected the change the name
+                headofgovt(random.choice(cmedium),uanswerarray,answer,"HARD")
+            
+            else:
+                headofgovt(country,uanswerarray,answer,"HARD")
+            
+    return answer,uanswerarray
+
+
+def calleasy():
+          score = 0
+          answer=[]
+          unanswerarray= []
+          answer,unanswerarray = questionsleveleasy() # Return array of user and actual answer 
+          for j in range(5):
+           
+                a = unanswerarray[j]
+                b = answer[j]
+                
+                if a == b: # Comparing user answer and actual answer
+                    score += 1
+          print("\n{0}, you scored {1} out of {2}.".format(name, score,5)) # printing the score
+          return score
+
+def callmedium():
+                print("Welcome to medium level")
+                score = 0
+                answer=[]
+                unanswerarray= []
+                answer,unanswerarray = questionslevelmedium() # Return array of user and actual answer 
+                for j in range(5):
+                
+                    a = unanswerarray[j]
+                    b = answer[j]
+                    
+                    if a == b: # Comparing user answer and actual answer
+                        score += 1
+                print("\n{0}, you scored {1} out of {2}.".format(name, score,5)) # printing the score        
+                return score
+
+def callhard():
+                print("Welcome to hard level")
+                score = 0
+                answer=[]
+                unanswerarray= []
+                answer,unanswerarray = questionslevelhard() # Return array of user and actual answer 
+                for j in range(5):
+                
+                    a = unanswerarray[j]
+                    b = answer[j]
+                    
+                    if a == b: # Comparing user answer and actual answer
+                        score += 1
+                print("\n{0}, you scored {1} out of {2}.".format(name, score,5)) # printing the score
+                return score
+curscore =0
+
+def easy():
+    curscore = calleasy()
+    if(curscore > 3):
+            medium()
+    else:
+        easy()
+ 
+def medium():  
+    curscore =  callmedium()
+    if curscore > 3:
+            hard()
+    else:
+            medium()
+def hard():
+    curscore = callhard()
+    if(curscore < 4):
+        medium()
+
+
 name = input("Please enter your name: ").title()
 aq = input("Please enter number of times you like to play the quiz: ") # Number of times you want to attempt the quiz
 
@@ -346,20 +507,12 @@ def run_quiz(aq):
     
      x = 0
      while (x < int(aq)):
-          score = 0
-          print(score)
-          answer=[]
-          unanswerarray= []
-          answer,unanswerarray = questions() # Return array of user and actual answer 
-          for j in range(5):
-           
-            a = unanswerarray[j]
-            b = answer[j]
-            
-            if a == b: # Comparing user answer and actual answer
-                 score += 1
+          easy()
+          
+
+
           print("\nAttempt: " + str(x+1)) # Printing number of attempt 
-          print("\n{0}, you scored {1} out of {2}.".format(name, score,5)) # printing the score
+         #print("\n{0}, you scored {1} out of {2}.".format(name, score,5)) # printing the score
           x = x + 1
           
           
