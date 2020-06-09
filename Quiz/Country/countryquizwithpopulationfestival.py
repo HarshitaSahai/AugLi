@@ -44,6 +44,10 @@ df_csv2 = pd.read_csv('countrylevel.csv',encoding='cp1252')
 ceasy = df_csv2.iloc[0:28,0].values 
 cmedium = df_csv2.iloc[0:36,1].values
 chard = df_csv2.iloc[0:109,2].values  
+df_csv3 = pd.read_csv('festival.csv',encoding='cp1252')
+fcn = df_csv3.iloc[1:58,0].values
+fn = df_csv3.iloc[1:58,1].values
+
 
 
 
@@ -355,9 +359,133 @@ def population(country,uanswerarray,answer,qlevel): #Function to find population
         datawrite(ques,f,s,t,f4,cans,qtype,qlevel)
         uanswerarray.append(uanswer)
         answer.append(ansv)         # Appending the answer option in array 
+
+
+def festival(country,uanswerarray,answer,qlevel): #Function to festival
+    
+    try:
+        fcnl = fcn.tolist()
+        festivali =fcnl.index(country)
+        ans = fn[festivali]
+        options = ['A','B','C','D']
+        ansv = random.choice(options) # selecting option for answer
+        #print(ansv)
+        ansi = options.index(ansv) # finding its index in options
+        del options[ansi] # deleting that option
+        
+        print("Which of the following festival is celebrated in "  + str(country) +  "?")
+        ques = "Which of the following festival is celebrated in "  + str(country) +  "?"
+        qtype = "static"
+        if ansv == 'A':
+            print("A) " + ans)
+            f = ans
+        else:
+            if festivali - 1 != 0 :
+                f = fn[festivali-1]
+                print("A) " + f)
+            else:
+                f = fn[festivali+1]
+                print("A) " + f)
+        if ansv == 'B':
+            print("B) " + ans)
+            s = ans
+        else:
+            if festivali - 2 != 0 :
+                s = fn[festivali-2]
+                print("B) " + s)
+            else:
+                s = fn[festivali+2]
+                print("B) " + s)
+        if ansv == 'C':
+            print("C) " + ans)
+            t = ans
+        else:
+            if festivali - 3 != 0 :
+                t = fn[festivali-3]
+                print("C) " + t)
+            else:
+                t = fn[festivali+3]
+                print("C) " + t)
+        if ansv == 'D':
+            f4 = ans
+            print("D) " + ans)
+        else:
+            if festivali - 4!= 0 :
+                f4 = fn[festivali-4]
+                print("D) " + f4)
+            else:
+                f4 = fn[festivali+4]
+                print("D) " + f4)
+        cans = ans
+        uanswer = input()
+        datawrite(ques,f,s,t,f4,cans,qtype,qlevel)
+        uanswerarray.append(uanswer)
+        answer.append(ansv)         # Appending the answer option in array 
+    except:
+        country = random.choice(fcn)
+        fcnl = fcn.tolist()
+        festivali =fcnl.index(country)
+        ans = fn[festivali]
+        options = ['A','B','C','D']
+        ansv = random.choice(options) # selecting option for answer
+        #print(ansv)
+        ansi = options.index(ansv) # finding its index in options
+        del options[ansi] # deleting that option
+        
+        print("Which of the following festival is celebrated in "  + str(country) +  "?")
+        ques = "Which of the following festival is celebrated in "  + str(country) +  "?"
+        qtype = "static"
+        if ansv == 'A':
+            print("A) " + ans)
+            f = ans
+        else:
+            if festivali - 1 != 0 :
+                f = fn[festivali-1]
+                print("A) " + f)
+            else:
+                f = fn[festivali+1]
+                print("A) " + f)
+        if ansv == 'B':
+            print("B) " + ans)
+            s = ans
+        else:
+            if festivali - 2 != 0 :
+                s = fn[festivali-2]
+                print("B) " + s)
+            else:
+                s = fn[festivali+2]
+                print("B) " + s)
+        if ansv == 'C':
+            print("C) " + ans)
+            t = ans
+        else:
+            if festivali - 3 != 0 :
+                t = fn[festivali-3]
+                print("C) " + t)
+            else:
+                t = fn[festivali+3]
+                print("C) " + t)
+        if ansv == 'D':
+            f4 = ans
+            print("D) " + ans)
+        else:
+            if festivali - 4!= 0 :
+                f4 = fn[festivali-4]
+                print("D) " + f4)
+            else:
+                f4 = fn[festivali+4]
+                print("D) " + f4)
+        cans = ans
+        uanswer = input()
+        datawrite(ques,f,s,t,f4,cans,qtype,qlevel)
+        uanswerarray.append(uanswer)
+        answer.append(ansv)         # Appending the answer option in array 
+
+
+    
  
 
-funcnum = [1,2,3,4,5] # 1. Capital 2. Currency 3. Language 4. Head og govt.
+funcnum = [1,2,3,4,5,6] # 1. Capital 2. Currency 3. Language 4. Head og govt.
 
 
 
@@ -411,6 +539,13 @@ def questionsleveleasy(): # Function will create 5 questions randomly
             
             else:
                 population(country,uanswerarray,answer,"EASY")
+        elif j == [6]:
+            flag  = flag  + 2
+            if flag > 1: #If already accessed with global country selected the change the name
+                festival(random.choice(ceasy),uanswerarray,answer,"EASY")
+            
+            else:
+                festival(country,uanswerarray,answer,"EASY")
     return answer,uanswerarray
 
 def questionslevelmedium(): # Function will create 5 questions randomly
@@ -463,6 +598,13 @@ def questionslevelmedium(): # Function will create 5 questions randomly
             
             else:
                 population(country,uanswerarray,answer,"MEDIUM")
+        elif j == [6]:
+            flag  = flag  + 2
+            if flag > 1: #If already accessed with global country selected the change the name
+                festival(random.choice(cmedium),uanswerarray,answer,"MEDIUM")
+            
+            else:
+                festival(country,uanswerarray,answer,"MEDIUM")
             
     return answer,uanswerarray
 
@@ -511,10 +653,20 @@ def questionslevelhard(): # Function will create 5 questions randomly
         elif j == [5]:
             flag  = flag  + 2
             if flag > 1: #If already accessed with global country selected the change the name
-                population(random.choice(cmedium),uanswerarray,answer,"MEDIUM")
+                population(random.choice(cmedium),uanswerarray,answer,"HARD")
             
             else:
-                population(country,uanswerarray,answer,"MEDIUM")
+                population(country,uanswerarray,answer,"HARD")
+        elif j == [6]:
+            flag  = flag  + 2
+            if flag > 1: #If already accessed with global country selected the change the name
+                festival(random.choice(cmedium),uanswerarray,answer,"HARD")
+            
+            else:
+                festival(country,uanswerarray,answer,"HARD")
+        
+        
+        
             
     return answer,uanswerarray
 
