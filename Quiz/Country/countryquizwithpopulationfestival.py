@@ -45,8 +45,11 @@ ceasy = df_csv2.iloc[0:28,0].values
 cmedium = df_csv2.iloc[0:36,1].values
 chard = df_csv2.iloc[0:109,2].values  
 df_csv3 = pd.read_csv('festival.csv',encoding='cp1252')
-fcn = df_csv3.iloc[1:58,0].values
-fn = df_csv3.iloc[1:58,1].values
+fcn = df_csv3.iloc[0:58,0].values
+fn = df_csv3.iloc[0:58,1].values
+df_csv4 = pd.read_csv('placeswithcountry.csv',encoding='cp1252')
+pcn = df_csv4.iloc[0:43,0].values
+pn = df_csv4.iloc[0:43,1].values
 
 
 
@@ -480,12 +483,131 @@ def festival(country,uanswerarray,answer,qlevel): #Function to festival
         datawrite(ques,f,s,t,f4,cans,qtype,qlevel)
         uanswerarray.append(uanswer)
         answer.append(ansv)         # Appending the answer option in array 
+def places(country,uanswerarray,answer,qlevel): #Function to places
+    
+    try:
+        pcnl = pcn.tolist()
+        placei =pcnl.index(country)
+        ans = pn[placei]
+        options = ['A','B','C','D']
+        ansv = random.choice(options) # selecting option for answer
+        #print(ansv)
+        ansi = options.index(ansv) # finding its index in options
+        del options[ansi] # deleting that option
+        
+        print("Which of the following places are present in "  + str(country) +  "?")
+        ques = "Which of the following places are present in "  + str(country) +  "?"
+        qtype = "static"
+        if ansv == 'A':
+            print("A) " + ans)
+            f = ans
+        else:
+            if placei - 1 != 0 :
+                f = pn[placei-1]
+                print("A) " + f)
+            else:
+                f = pn[placei+1]
+                print("A) " + f)
+        if ansv == 'B':
+            print("B) " + ans)
+            s = ans
+        else:
+            if placei - 2 != 0 :
+                s = pn[placei-2]
+                print("B) " + s)
+            else:
+                s = pn[placei+2]
+                print("B) " + s)
+        if ansv == 'C':
+            print("C) " + ans)
+            t = ans
+        else:
+            if placei - 3 != 0 :
+                t = pn[placei-3]
+                print("C) " + t)
+            else:
+                t = pn[placei+3]
+                print("C) " + t)
+        if ansv == 'D':
+            f4 = ans
+            print("D) " + ans)
+        else:
+            if placei - 4!= 0 :
+                f4 = pn[placei-4]
+                print("D) " + f4)
+            else:
+                f4 = pn[placei+4]
+                print("D) " + f4)
+        cans = ans
+        uanswer = input()
+        datawrite(ques,f,s,t,f4,cans,qtype,qlevel)
+        uanswerarray.append(uanswer)
+        answer.append(ansv)         # Appending the answer option in array 
+    except:
+        country = random.choice(pcn)
+        pcnl = pcn.tolist()
+        placei =pcnl.index(country)
+        ans = pn[placei]
+        options = ['A','B','C','D']
+        ansv = random.choice(options) # selecting option for answer
+        #print(ansv)
+        ansi = options.index(ansv) # finding its index in options
+        del options[ansi] # deleting that option
+        
+        print("Which of the following place is present in "  + str(country) +  "?")
+        ques = "Which of the following place is present in "  + str(country) +  "?"
+        qtype = "static"
+        if ansv == 'A':
+            print("A) " + ans)
+            f = ans
+        else:
+            if placei - 1 != 0 :
+                f = pn[placei-1]
+                print("A) " + f)
+            else:
+                f = pn[placei+1]
+                print("A) " + f)
+        if ansv == 'B':
+            print("B) " + ans)
+            s = ans
+        else:
+            if placei - 2 != 0 :
+                s = pn[placei-2]
+                print("B) " + s)
+            else:
+                s = pn[placei+2]
+                print("B) " + s)
+        if ansv == 'C':
+            print("C) " + ans)
+            t = ans
+        else:
+            if placei - 3 != 0 :
+                t = pn[placei-3]
+                print("C) " + t)
+            else:
+                t = pn[placei+3]
+                print("C) " + t)
+        if ansv == 'D':
+            f4 = ans
+            print("D) " + ans)
+        else:
+            if placei - 4!= 0 :
+                f4 = pn[placei-4]
+                print("D) " + f4)
+            else:
+                f4 = pn[placei+4]
+                print("D) " + f4)
+        cans = ans
+        uanswer = input()
+        datawrite(ques,f,s,t,f4,cans,qtype,qlevel)
+        uanswerarray.append(uanswer)
+        answer.append(ansv)         # Appending the answer option in array 
 
 
     
  
 
-funcnum = [1,2,3,4,5,6] # 1. Capital 2. Currency 3. Language 4. Head og govt.
+funcnum = [1,2,3,4,5,6,7] # 1. Capital 2. Currency 3. Language 4. Head og govt.
 
 
 
@@ -546,6 +668,13 @@ def questionsleveleasy(): # Function will create 5 questions randomly
             
             else:
                 festival(country,uanswerarray,answer,"EASY")
+        elif j == [7]:
+            flag  = flag  + 2
+            if flag > 1: #If already accessed with global country selected the change the name
+                places(random.choice(ceasy),uanswerarray,answer,"EASY")
+            
+            else:
+                places(country,uanswerarray,answer,"EASY")
     return answer,uanswerarray
 
 def questionslevelmedium(): # Function will create 5 questions randomly
@@ -605,6 +734,14 @@ def questionslevelmedium(): # Function will create 5 questions randomly
             
             else:
                 festival(country,uanswerarray,answer,"MEDIUM")
+
+        elif j == [7]:
+            flag  = flag  + 2
+            if flag > 1: #If already accessed with global country selected the change the name
+                places(random.choice(ceasy),uanswerarray,answer,"MEDIUM")
+            
+            else:
+                places(country,uanswerarray,answer,"MEDIUM")
             
     return answer,uanswerarray
 
@@ -664,6 +801,13 @@ def questionslevelhard(): # Function will create 5 questions randomly
             
             else:
                 festival(country,uanswerarray,answer,"HARD")
+        elif j == [7]:
+            flag  = flag  + 2
+            if flag > 1: #If already accessed with global country selected the change the name
+                places(random.choice(ceasy),uanswerarray,answer,"HARD")
+            
+            else:
+                places(country,uanswerarray,answer,"HARD")
         
         
         
