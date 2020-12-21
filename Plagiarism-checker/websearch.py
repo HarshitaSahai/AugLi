@@ -9,7 +9,7 @@ def searchBing(query, num):
     url = 'https://www.bing.com/search?q=' + query
     urls = []
 
-    page = requests.get(url, headers = {'User-agent': 'John Doe'})
+    page = requests.get(url, headers = {'User-agent': 'AugLi'})
     soup = bs(page.text, 'html.parser')
 
     for link in soup.find_all('a'):
