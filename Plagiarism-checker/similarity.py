@@ -2,17 +2,16 @@ import nltk
 import websearch
 from difflib import SequenceMatcher
 import pandas as pd
-import csv
-import numpy as np
-from nltk.corpus import stopwords
+
 nltk.download('stopwords')
 nltk.download('punkt')
 stop_words = set(nltk.corpus.stopwords.words('english')) 
 
+
 df_csv1 = pd.read_csv('argument.csv',encoding='cp1252')
-arg = df_csv1.iloc[0:1,0].values
+arg = df_csv1.iloc[21:40,0].values
+
 ans = []
-links = []
 
 def purifyText(string):
     words = nltk.word_tokenize(string)
@@ -41,50 +40,32 @@ def report(text):
         matches[matching_sites[i]] = similarity(text, websearch.extractText(matching_sites[i]))
 
     matches = {k: v for k, v in sorted(matches.items(), key=lambda item: item[1], reverse=True)}
+    
     flag = False
-    print(matches)
-    
-    if len(matches) > 10:
-        flag = True
-        res = matches.items()
-        data = list(res)
-        links.append(data)
-        ans.append(1)
-    elif matches:
-        res = matches.items()
-        data = list(res)
-        links.append(data)
-        for i in matches:
-            if(matches[i] >= 10):
-                ans.append(1)
-                flag = True
-                break
-    else:
-        flag = True
-        ans.append(0)
-        return matches
-    
+    for i in matches:
+        print(matches[i])
+        if matches[i] >= 20 :
+            ans.append("True")
+            print(i)
+            flag = True
+        if flag:
+            break
 
-k = 0
+    if flag == False :  
+        ans.append("False")
+    
+    print(ans)
+
+
 for i in arg:
     print(i)
     report(i)
 
 df_csv = pd.DataFrame(columns=['Argument'])
-df_csv1 = pd.DataFrame(columns=['Argument'])
 k = 0
-print(ans)
-print(links)
-
 for i in ans:
     df_csv.loc[k] = i 
     k = k + 1
+df_csv.to_csv('Result.csv', index=False, mode= 'w') # Sheeting have the required list
 
- 
-for i in links:
-    df_csv1 = df_csv1.append(i)
-    
 
-    
-df_csv.to_csv('sampleplargresult.csv', index=False, mode= 'w') # Sheeting have the required list
-df_csv1.to_csv('sampleplinks.csv', index=False, mode= 'w') # Sheeting have the required list
