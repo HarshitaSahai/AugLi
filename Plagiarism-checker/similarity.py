@@ -9,7 +9,7 @@ stop_words = set(nltk.corpus.stopwords.words('english'))
 
 
 df_csv1 = pd.read_csv('argument.csv',encoding='cp1252')
-arg = df_csv1.iloc[21:40,0].values
+arg = df_csv1.iloc[106:200].values
 
 ans = []
 
@@ -44,11 +44,11 @@ def report(text):
     flag = False
     for i in matches:
         print(matches[i])
-        if matches[i] >= 20 :
+        if matches[i] >=20 :
             ans.append("True")
             print(i)
             flag = True
-        if flag:
+        if flag:3
             break
 
     if flag == False :  
@@ -59,7 +59,7 @@ def report(text):
 
 for i in arg:
     print(i)
-    report(i)
+    report(str(i))
 
 df_csv = pd.DataFrame(columns=['Argument'])
 k = 0
